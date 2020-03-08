@@ -9,10 +9,10 @@ import numpy as np
 # second, for program esc is undo a mark, mouse click and move is mark a bbox
 # third, y or Y is to save. if no object in image, just only press Y or y
 
-inPathName = r"G:\ObjectDetection\ObjectDetectionCode\TailMineDetection\dataset\positivte20191115\sample_wkk_BeiHang_8Bit得到\positiveSamples"
+inPathName = r"/Users/keyanchen/Files/Dataset/标图/JPEGImages2"
 classToWrite = 1
-widthRatio = 1.5
-heightRatio = 1.5
+widthRatio = 1.
+heightRatio = 1.
 
 
 scalar = [(255, 0, 0), (0, 0, 255), (0, 255, 0), (200, 5, 200)]
