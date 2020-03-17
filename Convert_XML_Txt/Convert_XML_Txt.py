@@ -5,8 +5,8 @@ import xml.etree.ElementTree as T
 
 
 # change directory to the one with the files to be changed
-xml_path = r'/Users/keyanchen/Files/Dataset/704/ship_detection_online/Annotations_new'
-save_path_txt = r'/Users/keyanchen/Files/Dataset/704/ship_detection_online/Txt'
+xml_path = r'F:\DataSet\sar_ship\ship_detection_online\Annotations_new'
+save_path_txt = r'F:\DataSet\sar_ship\ship_detection_online\Annotations_new/Txt'
 
 # old files (xml format) will be moved to a "backup" folder
 # create the backup dir if it doesn't exist already

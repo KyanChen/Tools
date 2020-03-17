@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81a42d0e-fe30-451d-9d93-6c329bfe7717" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClassifyByIou/ClassifyByIou.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClassifyByIou/Readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Convert_XML_Txt/Readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Rename/Readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Rename/Rename.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Tools.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tools.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Convert_XML_Txt.py/Convert_XML_Txt.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TagImage/TagImage3_0.py" beforeDir="false" afterPath="$PROJECT_DIR$/TagImage/TagImage3_0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassifyByIou/ClassifyByIou.py" beforeDir="false" afterPath="$PROJECT_DIR$/ClassifyByIou/ClassifyByIou.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Convert_XML_Txt/Convert_XML_Txt.py" beforeDir="false" afterPath="$PROJECT_DIR$/Convert_XML_Txt/Convert_XML_Txt.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +22,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1TNxZwGMWNxw0a1vMUnyZvYFQms" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../RefineDet" />
@@ -51,18 +48,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="I:\Code\Tools\TagImage" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.ClassifyByIou">
     <configuration name="ClassifyByIou" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -178,8 +163,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.ClassifyByIou" />
-        <item itemvalue="Python.Rename" />
         <item itemvalue="Python.Convert_XML_Txt" />
+        <item itemvalue="Python.Rename" />
         <item itemvalue="Python.TagImage3_0" />
         <item itemvalue="Python.test" />
       </list>
@@ -207,6 +192,8 @@
       <workItem from="1583221062262" duration="2244000" />
       <workItem from="1583644682076" duration="2801000" />
       <workItem from="1583648924637" duration="13390000" />
+      <workItem from="1583905335031" duration="966000" />
+      <workItem from="1584008873785" duration="43000" />
     </task>
     <servers />
   </component>
@@ -225,6 +212,32 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="690" y="218" key="FileChooserDialogImpl" timestamp="1584008914760">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1584008914760" />
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom" timestamp="1583906406224">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1583906406224" />
+    <state width="1867" height="269" key="GridCell.Tab.0.center" timestamp="1583906406224">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="269" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1583906406224" />
+    <state width="1867" height="269" key="GridCell.Tab.0.left" timestamp="1583906406224">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="269" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1583906406224" />
+    <state width="1867" height="269" key="GridCell.Tab.0.right" timestamp="1583906406224">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1867" height="269" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1583906406224" />
+    <state x="577" y="303" key="com.intellij.ide.util.TipDialog" timestamp="1584008896422">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="577" y="303" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1584008896422" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -245,14 +258,14 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tools$Convert_XML_Txt.coverage" NAME="Convert_XML_Txt Coverage Results" MODIFIED="1583647039820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Convert_XML_Txt" />
-    <SUITE FILE_PATH="coverage/Tools$ClassifyByIou.coverage" NAME="ClassifyByIou Coverage Results" MODIFIED="1583684917910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ClassifyByIou" />
-    <SUITE FILE_PATH="coverage/Tools$test.coverage" NAME="test Coverage Results" MODIFIED="1577963377847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tools$Convert_XML_Txt.coverage" NAME="Convert_XML_Txt Coverage Results" MODIFIED="1583905385420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Convert_XML_Txt" />
+    <SUITE FILE_PATH="coverage/Tools$ClassifyByIou.coverage" NAME="ClassifyByIou Coverage Results" MODIFIED="1583905703379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ClassifyByIou" />
     <SUITE FILE_PATH="coverage/Tools$TagImage3_0.coverage" NAME="TagImage3_0 Coverage Results" MODIFIED="1583222345433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TagImage" />
-    <SUITE FILE_PATH="coverage/Tools$ResizeImgWithLabels.coverage" NAME="ResizeImgWithLabels Coverage Results" MODIFIED="1573317985254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ResizeImgWithLabels" />
-    <SUITE FILE_PATH="coverage/Tools$GetEachLabelFromTotal.coverage" NAME="GetEachLabelFromTotal Coverage Results" MODIFIED="1575428245654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetEachLabelFromTotal" />
     <SUITE FILE_PATH="coverage/Tools$main.coverage" NAME="main Coverage Results" MODIFIED="1575180219120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetmAP" />
-    <SUITE FILE_PATH="coverage/Tools$ViewPredictImg.coverage" NAME="ViewPredictImg Coverage Results" MODIFIED="1575428561938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ViewPredictImg" />
+    <SUITE FILE_PATH="coverage/Tools$GetEachLabelFromTotal.coverage" NAME="GetEachLabelFromTotal Coverage Results" MODIFIED="1575428245654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetEachLabelFromTotal" />
     <SUITE FILE_PATH="coverage/Tools$Rename.coverage" NAME="Rename Coverage Results" MODIFIED="1583684675815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Rename" />
+    <SUITE FILE_PATH="coverage/Tools$ResizeImgWithLabels.coverage" NAME="ResizeImgWithLabels Coverage Results" MODIFIED="1573317985254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ResizeImgWithLabels" />
+    <SUITE FILE_PATH="coverage/Tools$ViewPredictImg.coverage" NAME="ViewPredictImg Coverage Results" MODIFIED="1575428561938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ViewPredictImg" />
+    <SUITE FILE_PATH="coverage/Tools$test.coverage" NAME="test Coverage Results" MODIFIED="1577963377847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

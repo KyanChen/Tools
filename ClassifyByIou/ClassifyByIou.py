@@ -56,8 +56,8 @@ def txt_writer(f, numpy_data):
 
 
 if __name__ == '__main__':
-    gt_path = r'/Users/keyanchen/Files/Dataset/704/AIR-SARShip-1.0/Txt'
-    proposal_path = r'/Users/keyanchen/Files/Dataset/704/AIR-SARShip-1.0/patch_txt'
+    gt_path = r'F:\DataSet\sar_ship\ship_detection_online\Txt'
+    proposal_path = r'F:\DataSet\sar_ship\ship_detection_online\patch_txt'
     data = os.path.abspath(gt_path + r'/../' + 'data.txt')
     data_rate = os.path.abspath(gt_path + r'/../' + 'proposal_right_rate.txt')
 
