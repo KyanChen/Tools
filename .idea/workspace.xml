@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81a42d0e-fe30-451d-9d93-6c329bfe7717" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CalDataDistribution/CalDataDistribution.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CalDataDistribution/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TagImage/TagImage3_0.py" beforeDir="false" afterPath="$PROJECT_DIR$/TagImage/TagImage3_0.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,14 +43,49 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="I:\Code\Tools\ViewPredictImg" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="I:\Code\Tools\TagImage" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/CalDataDistribution" />
+      <recent name="I:\Code\Tools\ViewPredictImg" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.TagImage3_0">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.CalDataDistribution">
+    <configuration name="CalDataDistribution" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Tools" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CalDataDistribution" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CalDataDistribution/CalDataDistribution.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="ClassifyByIou" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tools" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -137,35 +174,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tools" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.CalDataDistribution" />
         <item itemvalue="Python.TagImage3_0" />
         <item itemvalue="Python.ClassifyByIou" />
         <item itemvalue="Python.Convert_XML_Txt" />
         <item itemvalue="Python.Rename" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +211,7 @@
       <workItem from="1584437073865" duration="5688000" />
       <workItem from="1584508113227" duration="16000" />
       <workItem from="1584510418266" duration="278000" />
+      <workItem from="1584510963848" duration="1395000" />
     </task>
     <servers />
   </component>
@@ -275,6 +291,11 @@
           <line>99</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CalDataDistribution/CalDataDistribution.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -289,11 +310,12 @@
     <SUITE FILE_PATH="coverage/Tools$Convert_XML_Txt.coverage" NAME="Convert_XML_Txt Coverage Results" MODIFIED="1583905385420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Convert_XML_Txt" />
     <SUITE FILE_PATH="coverage/Tools$ClassifyByIou.coverage" NAME="ClassifyByIou Coverage Results" MODIFIED="1584437119190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ClassifyByIou" />
     <SUITE FILE_PATH="coverage/Tools$TagImage3_0.coverage" NAME="TagImage3_0 Coverage Results" MODIFIED="1584443486254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TagImage" />
-    <SUITE FILE_PATH="coverage/Tools$main.coverage" NAME="main Coverage Results" MODIFIED="1575180219120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetmAP" />
-    <SUITE FILE_PATH="coverage/Tools$GetEachLabelFromTotal.coverage" NAME="GetEachLabelFromTotal Coverage Results" MODIFIED="1575428245654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetEachLabelFromTotal" />
-    <SUITE FILE_PATH="coverage/Tools$Rename.coverage" NAME="Rename Coverage Results" MODIFIED="1583684675815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Rename" />
-    <SUITE FILE_PATH="coverage/Tools$ResizeImgWithLabels.coverage" NAME="ResizeImgWithLabels Coverage Results" MODIFIED="1573317985254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ResizeImgWithLabels" />
-    <SUITE FILE_PATH="coverage/Tools$ViewPredictImg.coverage" NAME="ViewPredictImg Coverage Results" MODIFIED="1575428561938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ViewPredictImg" />
     <SUITE FILE_PATH="coverage/Tools$test.coverage" NAME="test Coverage Results" MODIFIED="1577963377847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tools$GetEachLabelFromTotal.coverage" NAME="GetEachLabelFromTotal Coverage Results" MODIFIED="1575428245654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetEachLabelFromTotal" />
+    <SUITE FILE_PATH="coverage/Tools$ResizeImgWithLabels.coverage" NAME="ResizeImgWithLabels Coverage Results" MODIFIED="1573317985254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ResizeImgWithLabels" />
+    <SUITE FILE_PATH="coverage/Tools$main.coverage" NAME="main Coverage Results" MODIFIED="1575180219120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetmAP" />
+    <SUITE FILE_PATH="coverage/Tools$ViewPredictImg.coverage" NAME="ViewPredictImg Coverage Results" MODIFIED="1575428561938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ViewPredictImg" />
+    <SUITE FILE_PATH="coverage/Tools$CalDataDistribution.coverage" NAME="CalDataDistribution Coverage Results" MODIFIED="1584512244979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CalDataDistribution" />
+    <SUITE FILE_PATH="coverage/Tools$Rename.coverage" NAME="Rename Coverage Results" MODIFIED="1583684675815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Rename" />
   </component>
 </project>
