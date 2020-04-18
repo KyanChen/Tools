@@ -6,7 +6,7 @@ import operator
 import sys
 import argparse
 
-MINOVERLAP = 0.5 # default value (defined in the PASCAL VOC2012 challenge)
+MINOVERLAP = 0.5  # default value (defined in the PASCAL VOC2012 challenge)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-na', '--no-animation', help="no animation is shown.", action="store_true")

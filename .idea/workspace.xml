@@ -2,13 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81a42d0e-fe30-451d-9d93-6c329bfe7717" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Copy_Files/Copy_Files.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TagImage/TagImage3_0.py" beforeDir="false" afterPath="$PROJECT_DIR$/TagImage/TagImage3_0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GetDetectionAndFalseAlarmRate/GetDetectionRate.py" beforeDir="false" afterPath="$PROJECT_DIR$/GetDetectionAndFalseAlarmRate/GetDetectionRate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GetmAP/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/GetmAP/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -30,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FurnaceHeaterVariableControl_ReinforcementLearning" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -48,7 +64,7 @@
       <recent name="I:\Code\Tools\TagImage" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.TagImage3_0">
+  <component name="RunManager" selected="Python.GetDetectionRate">
     <configuration name="ClassifyByIou" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tools" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -93,7 +109,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Rename" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Copy_Files" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Tools" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -101,12 +117,34 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Rename" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Copy_Files" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Rename/Rename.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Copy_Files/Copy_Files.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GetDetectionRate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Tools" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GetDetectionAndFalseAlarmRate" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GetDetectionAndFalseAlarmRate/GetDetectionRate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -137,35 +175,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tools" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.GetDetectionRate" />
+        <item itemvalue="Python.Copy_Files" />
         <item itemvalue="Python.TagImage3_0" />
         <item itemvalue="Python.ClassifyByIou" />
         <item itemvalue="Python.Convert_XML_Txt" />
-        <item itemvalue="Python.Rename" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +212,7 @@
       <workItem from="1584437073865" duration="5688000" />
       <workItem from="1584508113227" duration="16000" />
       <workItem from="1584510418266" duration="278000" />
+      <workItem from="1586777277177" duration="3893000" />
     </task>
     <servers />
   </component>
@@ -216,26 +233,26 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="218" key="FileChooserDialogImpl" timestamp="1584008914760">
+    <state x="690" y="218" key="FileChooserDialogImpl" timestamp="1586917653999">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1584008914760" />
-    <state width="1867" height="333" key="GridCell.Tab.0.bottom" timestamp="1584446607065">
+    <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1586917653999" />
+    <state width="1867" height="513" key="GridCell.Tab.0.bottom" timestamp="1586917657441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="333" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1584446607065" />
-    <state width="1867" height="333" key="GridCell.Tab.0.center" timestamp="1584446607065">
+    <state width="1867" height="513" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1586917657441" />
+    <state width="1867" height="513" key="GridCell.Tab.0.center" timestamp="1586917657441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="333" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1584446607065" />
-    <state width="1867" height="333" key="GridCell.Tab.0.left" timestamp="1584446607065">
+    <state width="1867" height="513" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1586917657441" />
+    <state width="1867" height="513" key="GridCell.Tab.0.left" timestamp="1586917657441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="333" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1584446607065" />
-    <state width="1867" height="333" key="GridCell.Tab.0.right" timestamp="1584446607065">
+    <state width="1867" height="513" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1586917657441" />
+    <state width="1867" height="513" key="GridCell.Tab.0.right" timestamp="1586917657441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1867" height="333" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1584446607065" />
+    <state width="1867" height="513" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1440.860@0.0.1920.1040" timestamp="1586917657441" />
     <state width="1867" height="333" key="GridCell.Tab.1.bottom" timestamp="1584446607066">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -286,9 +303,11 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Tools$GetDetectionRate.coverage" NAME="GetDetectionRate Coverage Results" MODIFIED="1586870162539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetDetectionAndFalseAlarmRate" />
     <SUITE FILE_PATH="coverage/Tools$Convert_XML_Txt.coverage" NAME="Convert_XML_Txt Coverage Results" MODIFIED="1583905385420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Convert_XML_Txt" />
     <SUITE FILE_PATH="coverage/Tools$ClassifyByIou.coverage" NAME="ClassifyByIou Coverage Results" MODIFIED="1584437119190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ClassifyByIou" />
     <SUITE FILE_PATH="coverage/Tools$TagImage3_0.coverage" NAME="TagImage3_0 Coverage Results" MODIFIED="1584443486254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TagImage" />
+    <SUITE FILE_PATH="coverage/Tools$Copy_Files.coverage" NAME="Copy_Files Coverage Results" MODIFIED="1586865427550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Copy_Files" />
     <SUITE FILE_PATH="coverage/Tools$main.coverage" NAME="main Coverage Results" MODIFIED="1575180219120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetmAP" />
     <SUITE FILE_PATH="coverage/Tools$GetEachLabelFromTotal.coverage" NAME="GetEachLabelFromTotal Coverage Results" MODIFIED="1575428245654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GetEachLabelFromTotal" />
     <SUITE FILE_PATH="coverage/Tools$Rename.coverage" NAME="Rename Coverage Results" MODIFIED="1583684675815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Rename" />

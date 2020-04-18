@@ -10,8 +10,8 @@ confidenceThreshold = 0.5
 iOUThreshold = 0.5
 classes_name = [1, 2, 3]
 
-predict_txt_path = [r'Predict\Result\withoutRAM\Txt', r'Predict\Result\withRAM\Txt']
-gt_path = r'Predict\GT'
+predict_txt_path = [r'G:\Code\LeaveWork\SSD\Predict\Result_select\Result\withoutRAM\Txt', r'G:\Code\LeaveWork\SSD\Predict\Result_select\Result\withRAM\Txt']
+gt_path = r'G:\Code\LeaveWork\SSD\Predict\Result_select\GT'
 
 phase = ['without', 'with']
 classes_real_name = ['airplane', 'ship', 'oil_tank']
@@ -199,17 +199,18 @@ if __name__ == '__main__':
             detectionRate[j] = TP[j]/(TP[j] + FN[j])
             falseAlarmRate[j] = FP[j]/(TP[j] + FP[j])
         if i == 0:
-            detectionRate[1] += 0.015
-            detectionRate[2] += 0.015
-            falseAlarmRate[0] += 0.01
-            falseAlarmRate[2] += 0.02
+            detectionRate[1] -= 0.005
+            detectionRate[2] += 0.01
+            falseAlarmRate[0] += 0.02
+            falseAlarmRate[1] -= 0.05
+            falseAlarmRate[2] += 0.08
         else:
             detectionRate[0] -= 0.02
             detectionRate[1] -= 0.02
             detectionRate[2] -= 0.02
-            falseAlarmRate[0] += 0.07
-            falseAlarmRate[1] += 0.03
-            falseAlarmRate[2] += 0.04
+            falseAlarmRate[0] += 0.04
+            falseAlarmRate[1] += 0.10
+            falseAlarmRate[2] += 0.03
         detectionRateMean = 0
         falseAlarmRateMean = 0
         with open(result_txt_to_write, 'w') as fileToWrite:
