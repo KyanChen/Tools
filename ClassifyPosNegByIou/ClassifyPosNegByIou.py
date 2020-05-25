@@ -56,26 +56,35 @@ def txt_writer(f, numpy_data):
 
 
 if __name__ == '__main__':
-    gt_path = r'F:\DataSet\sar_ship\ship_detection_online\Txt'
-    proposal_path = r'F:\DataSet\sar_ship\ship_detection_online\patch_txt'
+    gt_path = r'F:\DataSet\sar_ship\SSDD数据以及标签\label_txt'
+    proposal_path = r'F:\DataSet\sar_ship\SSDD数据以及标签\patch_txt'
     data = os.path.abspath(gt_path + r'/../' + 'data.txt')
     data_rate = os.path.abspath(gt_path + r'/../' + 'proposal_right_rate.txt')
 
     if os.path.exists(data):
         os.remove(data)
     data_writer = open(data, 'a')
+    # gt框的数量
     gt_num = 0
+    # 候选框数量
     proposal_num = 0
-    proposal_truth_num = 0
-    gt_no_proposal_num = 0
+    # 正候选框数量
+    proposal_pos_num = 0
+    # 负候选框数量
+    proposal_neg_num = 0
+    # iou模糊候选框数量
+    proposal_fuzzy_num = 0
+    # 没有匹配到的gt数量
+    gt_no_match_num = 0
 
-    threshold = 1e-5
+    neg_threshold = 1e-7
+    pos_threshold = 0.1
 
     proposal_file_list = glob.glob(proposal_path + r'/*.txt')
     pbar = tqdm.tqdm(total=len(proposal_file_list))
     for proposal_file in proposal_file_list:
         pbar.update(1)
-        # gt_file = os.path.join(gt_path, os.path.basename(proposal_file).replace('.tiff', ''))
+        # gt_file = os.path.join(gt_path, os.path.basename(proposal_file).replace('8bits', 'label'))
         gt_file = os.path.join(gt_path, os.path.basename(proposal_file))
         proposal_all = parserTxt(proposal_file, is_with_classes=False)
         proposal_num += len(proposal_all)
@@ -84,19 +93,25 @@ if __name__ == '__main__':
             continue
         gt_boxes = parserTxt(gt_file, is_with_classes=True)
         gt_num += len(gt_boxes)
+
         # 统计没有被候选框交叠过的gt
         gt_temp = np.zeros(len(gt_boxes))
         for idx, proposal_box in enumerate(proposal_all[:, 0:4]):
             iou = calculate_iou(proposal_box, gt_boxes)
-
-            gt_temp += iou > threshold
-            proposal_truth_num += np.any(iou > threshold)
-            txt_writer(data_writer, np.expand_dims(np.insert(proposal_all[idx, 4:], 0, np.any(iou > threshold), 0), axis=0))
-        gt_no_proposal_num += np.sum(gt_temp == 0)
+            if np.any(iou > pos_threshold):
+                gt_temp += iou > pos_threshold
+                proposal_pos_num += 1
+                txt_writer(data_writer, np.expand_dims(np.insert(proposal_all[idx, 4:], 0, 1, 0), axis=0))
+            elif np.all(iou < neg_threshold):
+                proposal_neg_num += 1
+                txt_writer(data_writer, np.expand_dims(np.insert(proposal_all[idx, 4:], 0, 0, 0), axis=0))
+            else:
+                proposal_fuzzy_num += 1
+        gt_no_match_num += np.sum(gt_temp == 0)
     pbar.close()
     with open(data_rate, 'w') as data_rate_f:
-        str_ = "gt_num: %d\nproposal_num: %d\nproposal_truth_num: %d\ngt_no_proposal_num: %d" \
-               % (gt_num, proposal_num, proposal_truth_num, gt_no_proposal_num)
+        str_ = "gt框数量: %d\n候选框数量: %d\n候选正样本框数量: %d\n候选负样本框数量: %d\niou模糊的候选样本框数量：%d\n没有候选框匹配的gt数量：%d" \
+               % (gt_num, proposal_num, proposal_pos_num, proposal_neg_num, proposal_fuzzy_num, gt_no_match_num)
         data_rate_f.write(str_)
 
 

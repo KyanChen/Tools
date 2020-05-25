@@ -1,20 +1,18 @@
 import numpy as np
-from scipy.optimize import linear_sum_assignment as linear_assignment
+# from scipy.optimize import linear_sum_assignment as linear_assignment
 import glob
 import os
-from scipy.integrate import trapz
+# from scipy.integrate import trapz
 
 # cal the detection rate and the false alarm rate
 
 confidenceThreshold = 0.5
-iOUThreshold = 0.5
-classes_name = [1, 2, 3]
+iOUThreshold = 0.001
 
-predict_txt_path = [r'G:\Code\LeaveWork\SSD\Predict\Result_select\Result\withoutRAM\Txt', r'G:\Code\LeaveWork\SSD\Predict\Result_select\Result\withRAM\Txt']
-gt_path = r'G:\Code\LeaveWork\SSD\Predict\Result_select\GT'
+predict_txt_path = r'G:\Code\TailMineDetection_RefineDet\test_results\predict_label'
+gt_path = r'F:\DataSet\WKK\test\gt'
 
-phase = ['without', 'with']
-classes_real_name = ['airplane', 'ship', 'oil_tank']
+classes_name = ['tail_mine']
 
 def get_iou(bb_test, bb_gt):
     '''
@@ -121,111 +119,84 @@ def file_lines_to_list(path):
 
 
 if __name__ == '__main__':
+    result_txt_to_write = os.path.abspath(os.path.join(predict_txt_path, r'../result.txt'))
+    predictFileList = glob.glob(os.path.join(predict_txt_path, '*.txt'))
 
-    for i in range(0, 2):
-        result_txt_to_write = os.path.abspath(os.path.join(predict_txt_path[i], r'../result.txt'))
-        if os.path.exists(result_txt_to_write):
-            os.remove(result_txt_to_write)
-        predictFileList = glob.glob(os.path.abspath(os.path.join(predict_txt_path[i], '*.txt')))
-        gtFileList = glob.glob(os.path.abspath(os.path.join(gt_path, '*.txt')))
-        predictFileList.sort()
-        gtFileList.sort()
-
-        detectionRate = [0, 0, 0]
-        falseAlarmRate = [0, 0, 0]
-        TP = [0, 0, 0]
-        FP = [0, 0, 0]
-        FN = [0, 0, 0]
-        for j, x in enumerate(predictFileList):
-
-            predictBboxList = []
-            gtBboxList = []
-            lineList = file_lines_to_list(x)
-            for line in lineList:
+    detectionRate = np.zeros(len(classes_name))
+    falseAlarmRate = np.zeros(len(classes_name))
+    TP = np.zeros(len(classes_name))
+    FP = np.zeros(len(classes_name))
+    FN = np.zeros(len(classes_name))
+    for idx, pred_file in enumerate(predictFileList):
+        predictBboxList = []
+        gtBboxList = []
+        lineList = file_lines_to_list(pred_file)
+        for line in lineList:
+            try:
                 class_name, confidence, left, top, right, bottom = line.split()
                 if float(confidence) < confidenceThreshold:
                     continue
-                predictBboxList.append([int(class_name), float(left), float(top), float(right), float(bottom)])
-
-            if os.path.basename(x) != os.path.basename(gtFileList[j]):
-                print("文件不对应")
-                exit()
-            lineList = file_lines_to_list(gtFileList[j])
-            for line in lineList:
+            except:
                 class_name, left, top, right, bottom = line.split()
-                if not (int(class_name) in classes_name):
-                    continue
-                top = float(top) * 512 / 600
-                left = float(left) * 512 / 800
-                bottom = float(bottom) * 512 / 600
-                right = float(right) * 512 / 800
+            predictBboxList.append([class_name, float(left), float(top), float(right), float(bottom)])
 
-                top = 0 if top < 0 else top
-                left = 0 if left < 0 else left
-                bottom = 512 if bottom > 512 else bottom
-                right = 512 if right > 512 else right
-                gtBboxList.append([int(class_name), float(left), float(top), float(right), float(bottom)])
-
-            # if not len(predictBboxList):
-            #     for m in range(len(gtBboxList)):
-            #         gt_class_name, gt_left, gt_top, gt_right, gt_bottom = gtBboxList[m]
-            #         FN[int(gt_class_name) - 1] += 1
-            gtBboxIndex = set()
-            for k in range(len(predictBboxList)):
-                pre_class_name, pre_left, pre_top, pre_right, pre_bottom = predictBboxList[k]
-                iOUList = []
-                for m in range(len(gtBboxList)):
-                    gt_class_name, gt_left, gt_top, gt_right, gt_bottom = gtBboxList[m]
-                    curiOU = get_iou([pre_left, pre_top, pre_right, pre_bottom], [gt_left, gt_top, gt_right, gt_bottom])
-                    iOUList.append([curiOU, gt_class_name, m])
-                iOUList.sort(reverse=True, key=lambda elem:elem[0])
-                if not len(iOUList):
-                    FP[int(pre_class_name) - 1] += 1
-                    continue
-                curiOU, gt_class_name, gt_index_to_exclude = iOUList[0]
-                if curiOU < iOUThreshold:
-                    FP[int(pre_class_name)-1] += 1
-                else:
-                    if pre_class_name != gt_class_name:
-                        FP[int(pre_class_name) - 1] += 1
-                    else:
-                        TP[int(pre_class_name) - 1] += 1
-                        gtBboxIndex.add(gt_index_to_exclude)
-
-            for k in range(len(gtBboxList)):
-                if k not in gtBboxIndex:
-                    FN[int(gtBboxList[k][0]) - 1] += 1
-        for j in range(len(classes_name)):
-            detectionRate[j] = TP[j]/(TP[j] + FN[j])
-            falseAlarmRate[j] = FP[j]/(TP[j] + FP[j])
-        if i == 0:
-            detectionRate[1] -= 0.005
-            detectionRate[2] += 0.01
-            falseAlarmRate[0] += 0.02
-            falseAlarmRate[1] -= 0.05
-            falseAlarmRate[2] += 0.08
+        gt_file = os.path.join(gt_path, os.path.basename(pred_file))
+        if not os.path.exists(gt_file):
+            print("Not Found: " + gt_file)
         else:
-            detectionRate[0] -= 0.02
-            detectionRate[1] -= 0.02
-            detectionRate[2] -= 0.02
-            falseAlarmRate[0] += 0.04
-            falseAlarmRate[1] += 0.10
-            falseAlarmRate[2] += 0.03
-        detectionRateMean = 0
-        falseAlarmRateMean = 0
-        with open(result_txt_to_write, 'w') as fileToWrite:
-            print('__________' + phase[i] + '_RAM__________\n')
-            print('\t\t\t' + 'detectionRate\t' + 'falseAlarmRate\n')
-            fileToWrite.writelines('\t\t\t' + 'detectionRate\t' + 'falseAlarmRate\n')
-            for j, class_name in enumerate(classes_real_name):
-                detectionRateMean += detectionRate[j]
-                falseAlarmRateMean += falseAlarmRate[j]
-                print(class_name + '\t\t' + '%.3f' % detectionRate[j] + '\t\t' + '%.3f' % falseAlarmRate[j] + '\n')
-                fileToWrite.writelines(
-                    class_name + '\t\t' + '%.3f' % detectionRate[j] + '\t\t' + '%.3f' % falseAlarmRate[j] + '\n')
-            detectionRateMean /= 3
-            falseAlarmRateMean /= 3
-            print('mean' + '\t\t' + '%.3f' % detectionRateMean + '\t\t' + '%.3f' % falseAlarmRateMean+ '\n')
+            lineList = file_lines_to_list(gt_file)
+            for line in lineList:
+                try:
+                    class_name, left, top, right, bottom = line.split()
+                except:
+                    _, class_name, left, top, right, bottom = line.split()
+                class_name = 'tail_mine'
+                if class_name not in classes_name:
+                    continue
+                gtBboxList.append([class_name, float(left), float(top), float(right), float(bottom)])
+
+        gtBboxIndex = set()
+        for k in range(len(predictBboxList)):
+            pre_class_name, pre_left, pre_top, pre_right, pre_bottom = predictBboxList[k]
+            iOUList = []
+            for m in range(len(gtBboxList)):
+                gt_class_name, gt_left, gt_top, gt_right, gt_bottom = gtBboxList[m]
+                curiOU = get_iou([pre_left, pre_top, pre_right, pre_bottom], [gt_left, gt_top, gt_right, gt_bottom])
+                iOUList.append([curiOU, gt_class_name, m])
+            iOUList.sort(reverse=True, key=lambda elem:elem[0])
+            if not len(iOUList):
+                FP[classes_name.index(pre_class_name)] += 1
+                continue
+            curiOU, gt_class_name, gt_index_to_exclude = iOUList[0]
+            if curiOU < iOUThreshold:
+                FP[classes_name.index(pre_class_name)] += 1
+            else:
+                if pre_class_name != gt_class_name:
+                    FP[classes_name.index(pre_class_name)] += 1
+                else:
+                    TP[classes_name.index(pre_class_name)] += 1
+                    gtBboxIndex.add(gt_index_to_exclude)
+
+        for k in range(len(gtBboxList)):
+            if k not in gtBboxIndex:
+                FN[classes_name.index(gtBboxList[k][0])] += 1
+    for k in range(len(classes_name)):
+        detectionRate[k] = TP[k]/(TP[k] + FN[k])
+        falseAlarmRate[k] = FP[k]/(TP[k] + FP[k])
+    detectionRateMean = 0
+    falseAlarmRateMean = 0
+    with open(result_txt_to_write, 'w') as fileToWrite:
+        print('\t\t\t' + 'detectionRate\t' + 'falseAlarmRate\n')
+        fileToWrite.writelines('\t\t\t' + 'detectionRate\t' + 'falseAlarmRate\n')
+        for class_id, class_name in enumerate(classes_name):
+            detectionRateMean += detectionRate[class_id]
+            falseAlarmRateMean += falseAlarmRate[class_id]
+            print(class_name + '\t\t' + '%.3f' % detectionRate[class_id] + '\t\t' + '%.3f' % falseAlarmRate[class_id] + '\n')
             fileToWrite.writelines(
-                'mean' + '\t\t' + '%.3f' % detectionRateMean + '\t\t' + '%.3f' % falseAlarmRateMean)
+                class_name + '\t\t' + '%.3f' % detectionRate[class_id] + '\t\t' + '%.3f' % falseAlarmRate[class_id] + '\n')
+        detectionRateMean /= len(classes_name)
+        falseAlarmRateMean /= len(classes_name)
+        print('mean' + '\t\t' + '%.3f' % detectionRateMean + '\t\t' + '%.3f' % falseAlarmRateMean + '\n')
+        fileToWrite.writelines(
+            'mean' + '\t\t' + '%.3f' % detectionRateMean + '\t\t' + '%.3f' % falseAlarmRateMean)
 
