@@ -9,7 +9,7 @@ import glob
 mul = lambda arg1: arg1[0]*arg1[1]
 add = lambda arg1: arg1[0]+arg1[1]
 
-imgType = '.png'
+imgType = '.tiff'
 
 class DatasetNormalize:
     GoogleEarthNum = 0
@@ -26,7 +26,7 @@ class DatasetNormalize:
 
         if os.path.exists(self.outPath):
             shutil.rmtree(self.outPath)
-        os.mkdir(self.outPath)
+        os.makedirs(self.outPath)
         for key, value in kwargs.items():
             setattr(self, key, value)
 
@@ -46,7 +46,7 @@ class DatasetNormalize:
         return fileList
 
     def readImg(self, fileName):
-        img = cv2.imread(fileName, cv2.IMREAD_UNCHANGED)
+        img = cv2.imread(fileName, cv2.IMREAD_LOAD_GDAL)
         return img, img.shape[1], img.shape[0]
 
     def maxXYPieces(self, BigWidth, BigHeight):
@@ -85,6 +85,7 @@ class DatasetNormalize:
 
             bboxList = self.readTag(txtFile)
             img, width, height = self.readImg(imgFileList[i])
+            img = img[:, :, :3]
             maxPiecesX, maxPiecesY = self.maxXYPieces(width, height)
 
             flag = False
@@ -151,7 +152,9 @@ class DatasetNormalize:
             for k in range(len(bboxList)):
                 # print(width, height)
                 # print(bboxList[k])
-                x_1, y_1, x_2, y_2, classNum = bboxList[k]
+                # x_1, y_1, x_2, y_2, classNum = bboxList[k]
+                classNum = 1
+                x_1, y_1, x_2, y_2 = bboxList[k]
                 if x_1<0 or y_1<0 or x_2>width or y_2>height:
                     continue
                 x = math.floor(float(x_1) / self.smallWidth)
@@ -244,7 +247,7 @@ class DatasetNormalize:
                         fileToWrite.writelines(stringTxt)
         pbar.close()
         self.pairImgTxt(self.outPath)
-        self.deleteMaxBbox(self.outPath)
+        # self.deleteMaxBbox(self.outPath)
 
 
     def deleteMaxBbox(self, inPath):
@@ -288,10 +291,10 @@ class DatasetNormalize:
             # file_to_read = open(txtPathName, 'w')
             # file_to_read.close()
         with open(txtName, 'r') as file_to_read:
-            lines = file_to_read.readline()
-            self.PreTxtInfor = lines
-            lines = file_to_read.readline()
-            self.PreTxtInfor = self.PreTxtInfor + lines
+            # lines = file_to_read.readline()
+            # self.PreTxtInfor = lines
+            # lines = file_to_read.readline()
+            # self.PreTxtInfor = self.PreTxtInfor + lines
             while True:
                 lines = file_to_read.readline()  # 整行读取数据
                 if not lines:
@@ -299,7 +302,7 @@ class DatasetNormalize:
                     pass
                 data = lines.split() # 将整行数据分割处理，如果分割符是空格，括号里就不用传入参数，如果是逗号， 则传入‘，'字符。
                 # dataToRead = list(map(int, data[1:]))
-                dataToRead = [int(float(x)) for x in data]
+                dataToRead = [int(float(x)) for x in data[1:]]
                 bboxList.append(dataToRead)
         return bboxList
 
@@ -697,14 +700,14 @@ class DatasetNormalize:
 
 
 def main():
-    inPath = r"E:\Lab\Dataset\DOTA-v1.5\Processed\val\GF_tagProcessed"
-    outPath =r'E:\Lab\Dataset\DOTA-v1.5\Processed\val\GF_tagProcessed_cut'
-    dn = DatasetNormalize(inPath, outPath, smallWidth=800, smallHeight=600)
+    inPath = r"/Users/keyanchen/Files/Code/电子所/"
+    outPath =r'/Users/keyanchen/Files/Code/电子所/Pieces'
+    dn = DatasetNormalize(inPath, outPath, smallWidth=512, smallHeight=512)
 
     # dn.divideSource()
     # dn.processTagForDOTA()
-    # dn.getPiece()
-    dn.writeInfor(r'E:\Lab\Dataset\LEVIR\imageWithLabel\evaluation')
+    dn.getPiece()
+    # dn.writeInfor(r'E:\Lab\Dataset\LEVIR\imageWithLabel\evaluation')
 
 
 if __name__ == '__main__':
