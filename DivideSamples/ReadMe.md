@@ -1,0 +1,1 @@
+# divide total data into train and val data folder

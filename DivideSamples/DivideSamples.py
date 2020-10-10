@@ -1,41 +1,29 @@
-# 把数据按比例随机分成正负样本
-
 import os
 import glob
 import random
 import shutil
+import tqdm
 
-positive_rate = 0.7
-sample_path = r'F:\DataSet\NWPU VHR-10 dataset\positive image set'
-img_format = 'jpg'
 
-img_file_list = glob.glob(os.path.join(sample_path, '*.%s' % img_format))
-positive_index = random.sample(range(0, len(img_file_list)), int(positive_rate * len(img_file_list)))
-negative_index = set(range(0, len(img_file_list))) - set(positive_index)
+def divide_samples(in_path, out_path, positive_rate=0.7, img_format='jpg'):
+    img_file_list = glob.glob(in_path + '/*{}'.format(img_format))
 
-dst_path = os.path.join(os.path.dirname(img_file_list[0]), 'train')
-if os.path.exists(dst_path):
-    shutil.rmtree(dst_path)
-os.makedirs(dst_path)
+    train_index = random.sample(range(0, len(img_file_list)), int(positive_rate * len(img_file_list)))
+    val_index = set(range(0, len(img_file_list))) - set(train_index)
+    lookup_dict = {'train': train_index, 'val': val_index}
+    for key, value in lookup_dict.items():
+        os.makedirs(out_path + '/{}'.format(key), exist_ok=True)
+        for i in tqdm.tqdm(value):
+            img_file = img_file_list[i]
+            txt_file = img_file.replace(img_format, 'txt')
+            to_img_file = out_path + '/{}/'.format(key) + os.path.basename(img_file)
+            to_txt_file = to_img_file.replace(img_format, 'txt')
+            shutil.copyfile(img_file, to_img_file)
+            shutil.copyfile(txt_file, to_txt_file)
 
-dst_path = os.path.join(os.path.dirname(img_file_list[0]), 'test')
-if os.path.exists(dst_path):
-    shutil.rmtree(dst_path)
-os.makedirs(dst_path)
 
-for i in positive_index:
-    img_file = img_file_list[i]
-    txt_file = img_file.replace(img_format, 'txt')
-    img_file_save = os.path.join(os.path.dirname(img_file), 'train', os.path.basename(img_file))
-    txt_file_save = img_file_save.replace(img_format, 'txt')
-    shutil.copyfile(img_file, img_file_save)
-    shutil.copyfile(txt_file, txt_file_save)
-
-for i in negative_index:
-    img_file = img_file_list[i]
-    txt_file = img_file.replace(img_format, 'txt')
-    img_file_save = os.path.join(os.path.dirname(img_file), 'test', os.path.basename(img_file))
-    txt_file_save = img_file_save.replace(img_format, 'txt')
-    shutil.copyfile(img_file, img_file_save)
-    shutil.copyfile(txt_file, txt_file_save)
+if __name__ == '__main__':
+    in_path = r'F:\DataSet\GF1_2\total_data'
+    out_path = r'F:\DataSet\GF1_2\total_data'
+    divide_samples(in_path, out_path)
 
