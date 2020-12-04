@@ -5,12 +5,14 @@ import shutil
 import tqdm
 
 
-def divide_samples(in_path, out_path, positive_rate=0.7, img_format='jpg'):
+def divide_samples(in_path, out_path, positive_rate=0.8, img_format='jpg'):
     img_file_list = glob.glob(in_path + '/*{}'.format(img_format))
 
     train_index = random.sample(range(0, len(img_file_list)), int(positive_rate * len(img_file_list)))
     val_index = set(range(0, len(img_file_list))) - set(train_index)
     lookup_dict = {'train': train_index, 'val': val_index}
+    os.makedirs(out_path + '/train', exist_ok=True)
+    os.makedirs(out_path + '/val', exist_ok=True)
     for key, value in lookup_dict.items():
         os.makedirs(out_path + '/{}'.format(key), exist_ok=True)
         for i in tqdm.tqdm(value):

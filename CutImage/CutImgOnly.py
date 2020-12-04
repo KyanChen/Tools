@@ -4,31 +4,27 @@ import cv2
 import tqdm
 from osgeo import gdal
 import numpy as np
-img_piece_size = (1024, 1024)
+img_piece_size = (512, 512)
+
+
+def get_file(in_path_list, img_format):
+    file_list = []
+    for file in in_path_list:
+        if os.path.isdir(file):
+            files = glob.glob(file + '/*')
+            file_list.extend(get_file(files, img_format))
+        else:
+            if file.split('.')[-1] == img_format:
+                file_list += [file]
+    return file_list
 
 
 def get_pieces(img_parent_path, pieces_path, img_format):
-    if not os.path.exists(pieces_path):
-        os.makedirs(pieces_path)
-    img_path_list = glob.glob(img_parent_path+'/*%s' % img_format)
-    if len(img_path_list) == 0:
-        img_path_list = glob.glob(img_parent_path + '/*')
-        for img_path in tqdm.tqdm(img_path_list):
-            if not os.path.isdir(img_path):
-                continue
-            single_img_pieces_path = pieces_path + '/' + os.path.basename(img_path)
-            if not os.path.exists(single_img_pieces_path):
-                os.makedirs(single_img_pieces_path)
-            img_file_list = glob.glob(img_path + '/*%s' % img_format)
-            for idx in range(len(img_file_list)):
-                cut_img_to_pieces(img_file_list[idx], single_img_pieces_path, img_format)
-    else:
-        img_file_list = glob.glob(img_parent_path + '/*%s' % img_format)
-        for idx in range(len(img_file_list)):
-            pieces_save_path = pieces_path + '/' + os.path.basename(img_file_list[idx]).replace('.' + img_format, '')
-            if not os.path.exists(pieces_save_path):
-                os.makedirs(pieces_save_path)
-            cut_img_to_pieces(img_file_list[idx], pieces_save_path, img_format)
+    file_list = get_file([img_parent_path], img_format)
+    for img_path in tqdm.tqdm(file_list):
+        pieces_save_path = pieces_path + '/' + os.path.basename(img_path).replace('.' + img_format, '')
+        os.makedirs(pieces_save_path, exist_ok=True)
+        cut_img_to_pieces(img_path, pieces_save_path, img_format)
 
 
 def cut_img_to_pieces(img_file, save_folder, img_format):
@@ -40,15 +36,16 @@ def cut_img_to_pieces(img_file, save_folder, img_format):
     w_list[-1] = cols - img_piece_size[0]
     for h_step in h_list:
         for w_step in w_list:
-            img_data = tiff_dataset.ReadAsArray(w_step, h_step, img_piece_size[1], img_piece_size[0])
-            img_piece = img_data.astype(np.uint8)
+            img_data = tiff_dataset.ReadAsArray(w_step, h_step, img_piece_size[1], img_piece_size[0])[:3]
+            img_data = np.transpose(img_data, (1, 2, 0))
+            img_piece = (img_data / 4).astype(np.uint8)
             cv2.imwrite(save_folder + '/%s_%d_%d.jpg' %
                         (os.path.basename(img_file).replace('.' + img_format, ''),
                          w_step, h_step), img_piece)
 
 
 if __name__ == "__main__":
-    img_parent_path = r'I:\20200914'
+    img_parent_path = r'J:\GF1_GF6\GF1_WFV1_E127.3_N26.3_20180913_L1A0003450235'
     img_format = 'tiff'
-    pieces_save_path = r'I:\20200914\slice'
+    pieces_save_path = r'J:\GF1_GF6\GF1_WFV1_E127.3_N26.3_20180913_L1A0003450235\slices'
     get_pieces(img_parent_path, pieces_save_path, img_format)

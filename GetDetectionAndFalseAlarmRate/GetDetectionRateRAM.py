@@ -4,8 +4,8 @@ import glob
 import os
 from scipy.integrate import trapz
 
-# cal the detection rate and the false alarm rate
 
+# cal the detection rate and the false alarm rate
 confidenceThreshold = 0.5
 iOUThreshold = 0.5
 classes_name = [1, 2, 3]

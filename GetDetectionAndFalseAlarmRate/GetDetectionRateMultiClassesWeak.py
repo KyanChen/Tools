@@ -6,13 +6,14 @@ import os
 
 # cal the detection rate and the false alarm rate
 
-confidenceThreshold = 0.5
-iOUThreshold = 0.001
+confidenceThreshold = 0.2
+iOUThreshold = 0.005
 
-predict_txt_path = r'G:\Code\TailMineDetection_RefineDet\test_results\predict_label'
-gt_path = r'F:\DataSet\WKK\test\gt'
+predict_txt_path = r'G:\Coding\EfficientDet\EvalResults'
+gt_path = r'F:\DataSet\GF1_2\total_data\val_refine'
 
-classes_name = ['tail_mine']
+classes_name = ['1', '2', '3']
+
 
 def get_iou(bb_test, bb_gt):
     '''
@@ -31,8 +32,8 @@ def get_iou(bb_test, bb_gt):
     w = max(0., xx2 - xx1)
     h = max(0., yy2 - yy1)
     area = w * h
-    score = area / ((bb_test[2] - bb_test[0]) * (bb_test[3] - bb_test[1])
-                    + (bb_gt[2] - bb_gt[0]) * (bb_gt[3] - bb_gt[1]) - area)
+    score = area / (((bb_test[2] - bb_test[0]) * (bb_test[3] - bb_test[1])
+                    + (bb_gt[2] - bb_gt[0]) * (bb_gt[3] - bb_gt[1]) - area) + 1e-10)
     return score
 
 def assign(predict_boxes, real_boxes):
@@ -110,6 +111,7 @@ def get_mAP(all_predict_boxes, all_real_boxes):
         ap_arr.append(caculate_AP(all_predict_boxes[idx], all_real_boxes[idx]))
     return np.mean(ap_arr)
 
+
 def file_lines_to_list(path):
     with open(path) as f:
         content = f.readlines()
@@ -119,8 +121,8 @@ def file_lines_to_list(path):
 
 
 if __name__ == '__main__':
-    result_txt_to_write = os.path.abspath(os.path.join(predict_txt_path, r'../result.txt'))
-    predictFileList = glob.glob(os.path.join(predict_txt_path, '*.txt'))
+    result_txt_to_write = os.path.abspath(predict_txt_path + '/../result.txt')
+    predictFileList = glob.glob(predict_txt_path + '/*.txt')
 
     detectionRate = np.zeros(len(classes_name))
     falseAlarmRate = np.zeros(len(classes_name))
@@ -140,7 +142,7 @@ if __name__ == '__main__':
                 class_name, left, top, right, bottom = line.split()
             predictBboxList.append([class_name, float(left), float(top), float(right), float(bottom)])
 
-        gt_file = os.path.join(gt_path, os.path.basename(pred_file))
+        gt_file = gt_path + '/' + os.path.basename(pred_file)
         if not os.path.exists(gt_file):
             print("Not Found: " + gt_file)
         else:
@@ -150,7 +152,6 @@ if __name__ == '__main__':
                     class_name, left, top, right, bottom = line.split()
                 except:
                     _, class_name, left, top, right, bottom = line.split()
-                class_name = 'tail_mine'
                 if class_name not in classes_name:
                     continue
                 gtBboxList.append([class_name, float(left), float(top), float(right), float(bottom)])
@@ -163,7 +164,7 @@ if __name__ == '__main__':
                 gt_class_name, gt_left, gt_top, gt_right, gt_bottom = gtBboxList[m]
                 curiOU = get_iou([pre_left, pre_top, pre_right, pre_bottom], [gt_left, gt_top, gt_right, gt_bottom])
                 iOUList.append([curiOU, gt_class_name, m])
-            iOUList.sort(reverse=True, key=lambda elem:elem[0])
+            iOUList.sort(reverse=True, key=lambda elem: elem[0])
             if not len(iOUList):
                 FP[classes_name.index(pre_class_name)] += 1
                 continue

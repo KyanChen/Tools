@@ -5,11 +5,10 @@
       <sourceFolder url="file://$MODULE_DIR$/GetmAP" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/GetDetectionAndFalseAlarmRate" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.8 (pytorch_latest)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (pytorch_latest)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
-    <option name="projectConfiguration" value="pytest" />
     <option name="PROJECT_TEST_RUNNER" value="pytest" />
   </component>
 </module>

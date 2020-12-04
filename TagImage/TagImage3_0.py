@@ -9,12 +9,12 @@ import numpy as np
 # second, for program esc is undo a mark, mouse click and move is mark a bbox
 # third, y or Y is to save. if no object in image, just only press Y or y
 
-inPathName = r"F:\DataSet\WKK\sample_wkk_jx_BeiHang\8Bit"
-classes = ['bg', '2']
+inPathName = r"F:\DataSet\GF1_2\A"
+classes = ['1', '2', '3']
 classToWrite = '2'
-widthRatio = 0.5
-heightRatio = 0.4
-img_format = ['tiff']
+widthRatio = 1.5
+heightRatio = 1.5
+img_format = ['jpg']
 
 
 scalar = [(255, 0, 0), (0, 0, 255), (0, 255, 0), (200, 5, 200)]
@@ -168,7 +168,7 @@ class TagImage:
                 for j in range(0, len(self.bboxList)):
                     class_num, x_1, y_1, x_2, y_2 = self.bboxList[j]
                     self.curImg = cv2.rectangle(self.curImg, (x_1, y_1), (x_2, y_2), scalar[class_num-1], 2)
-                    cv2.putText(self.curImg, str(class_num), (x_1, y_1), cv2.FONT_HERSHEY_COMPLEX, 0.8, scalar[class_num-1], 1)
+                    cv2.putText(self.curImg, classes[class_num], (x_1, y_1), cv2.FONT_HERSHEY_COMPLEX, 0.8, scalar[class_num-1], 1)
                 if not self.isDrawFinished:
                     cv2.rectangle(self.curImg, (self.initBboxXY[0], self.initBboxXY[1]),
                                   (self.curBboxXY[0], self.curBboxXY[1]), (255, 255, 255), 1)

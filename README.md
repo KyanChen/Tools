@@ -1,7 +1,7 @@
 # Tools
 Some scripts or tools for daily using
 
-# MoveFilesTogether
+## 1 MoveFilesTogether
 `move splited files to one folder, like:`
 - folder1
     - file1
@@ -18,5 +18,26 @@ Some scripts or tools for daily using
     - file21
     - file22
     
-# DivideSamples
+## 2 DivideSamples
 `divide total data into train and val data folder by a rate`
+
+## 3 DeleteTinyObjInGt
+`delete some objects by some principles in groud truth`
+
+## 4 AddAnnotationsTogether
+`add annotations to one files`
+
+## 5 GetFileList
+`Get darknet train and val txt file which contain the image names`
+
+## 6 ParserJSON
+`Parser json file`
+
+## 7 ChangeLabelsFormat
+`Change Labels Format`
+
+   * left top right bottom to cx cy width height
+   * cx cy width height to left top right bottom
+
+## 8 ConvertXML2TXT
+`Convert XML file to TXT file`

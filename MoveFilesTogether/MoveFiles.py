@@ -13,7 +13,7 @@ def move_files(parent_path, to_path):
 
 
 if __name__ == '__main__':
-    parent_path = r'F:\DataSet\GF1_2\test_data'
-    to_path = r'F:\DataSet\GF1_2\total_data'
+    parent_path = r'G:\Coding\EfficientDet\EvalResults1020'
+    to_path = r'G:\Coding\EfficientDet\EvalResults1020\select'
     move_files(parent_path, to_path)
 
