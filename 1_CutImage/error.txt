@@ -1,0 +1,6 @@
+AttributeError("'NoneType' object has no attribute 'RasterCount'")I:\GF\temp_uncompress/GF6_WFV_E133.0_N38.0_20200914_L1A1120035551/GF6_WFV_E133.0_N38.0_20200914_L1A1120035551-2.tiff
+AttributeError("'NoneType' object has no attribute 'RasterCount'")I:\GF\temp_uncompress/GF6_WFV_E129.6_N26.9_20190617_L1A1119892017/GF6_WFV_E129.6_N26.9_20190617_L1A1119892017-3.tiff
+AttributeError("'NoneType' object has no attribute 'RasterCount'")I:\GF\temp_uncompress/GF6_WFV_E128.5_N22.4_20190617_L1A1119892018/GF6_WFV_E128.5_N22.4_20190617_L1A1119892018-3.tiff
+AttributeError("'NoneType' object has no attribute 'RasterCount'")I:\GF\temp_uncompress/GF6_WFV_E129.6_N26.9_20190617_L1A1119892017/GF6_WFV_E129.6_N26.9_20190617_L1A1119892017-3.tiff
+AttributeError("'NoneType' object has no attribute 'RasterCount'")I:\GF\temp_uncompress/GF6_WFV_E133.0_N38.0_20200914_L1A1120035551/GF6_WFV_E133.0_N38.0_20200914_L1A1120035551-2.tiff
+AttributeError("'NoneType' object has no attribute 'RasterCount'")I:\GF\temp_uncompress/GF6_WFV_E128.5_N22.4_20190617_L1A1119892018/GF6_WFV_E128.5_N22.4_20190617_L1A1119892018-3.tiff

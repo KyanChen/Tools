@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/FilterImage.iml" filepath="$PROJECT_DIR$/.idea/FilterImage.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/TagImage.iml" filepath="$PROJECT_DIR$/.idea/TagImage.iml" />
-    </modules>
-  </component>
-</project>
