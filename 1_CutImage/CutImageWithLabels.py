@@ -4,6 +4,7 @@ import glob
 import os
 import tqdm
 from skimage import io
+from numba import jit
 
 
 def jaccard_numpy(rect, bboxes):
@@ -17,24 +18,43 @@ def jaccard_numpy(rect, bboxes):
     return iou
 
 
+
 def cut_with_label(file_list):
     for id, img_file in tqdm.tqdm(enumerate(file_list)):
-        txt_file = img_file.replace('tiff', 'txt')
+        txt_file = img_file.replace(IMG_FORMAT, 'txt')
         bboxes = np.loadtxt(txt_file, ndmin=2)
         if len(bboxes) != 0:
             if bboxes[0][2] < 1:
-                raise ValueError("标注格式有问题")
+                print(txt_file)
+                # raise ValueError("标注格式有问题")
         else:
             bboxes = np.array([[-1, -1, -1, -1, -1]])
-        img = io.imread(img_file)
+        img = cv2.imread(img_file, cv2.IMREAD_COLOR)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img_h, img_w, _ = img.shape
-        w_list = list(range(0, img_w, SLICE_SIZE[0]))
-        w_list[-1] = img_w - SLICE_SIZE[0]
-        h_list = list(range(0, img_h, SLICE_SIZE[1]))
-        h_list[-1] = img_h - SLICE_SIZE[1]
+        w_list = []
+        h_list = []
+        w_coor = 0
+        while w_coor < img_w - SLICE_SIZE[0]:
+            w_list.append(int(w_coor))
+            w_coor += (1-OVERLAP_RATE) * SLICE_SIZE[0]
+        w_list.append(img_w - SLICE_SIZE[0])
 
-        x_start = float(img_file.split('_')[-2])
-        y_start = float(img_file.split('_')[-1].replace('.tiff', ''))
+        h_coor = 0
+        while h_coor < img_h - SLICE_SIZE[0]:
+            h_list.append(int(h_coor))
+            h_coor += (1 - OVERLAP_RATE) * SLICE_SIZE[1]
+        h_list.append(img_h - SLICE_SIZE[1])
+
+        try:
+            x_start = float(img_file.split('_')[-2])
+        except:
+            x_start = 0
+        try:
+            y_start = float(img_file.split('_')[-1].replace(IMG_FORMAT, ''))
+        except:
+            y_start = 0
+
         for w_start in w_list:
             for h_start in h_list:
                 # convert to integer rect x1,y1,x2,y2
@@ -68,21 +88,25 @@ def cut_with_label(file_list):
                 file_name = '_'.join(os.path.basename(img_file).split('_')[:-2])
                 img_save_path = SLICE_SAVED_PATH + '/' + os.path.basename(
                     os.path.dirname(img_file)) + '/' + file_name + '_' + repr(int(x_start + w_start)) + '_' + repr(
-                    int(y_start + h_start)) + '.tiff'
+                    int(y_start + h_start)) + '.' + IMG_FORMAT
+                # file_name = os.path.basename(img_file).replace('.' + IMG_FORMAT, '')
+                # img_save_path = SLICE_SAVED_PATH + '/' + file_name + '_' + repr(int(x_start + w_start)) + '_' + repr(
+                #     int(y_start + h_start)) + '.' + IMG_FORMAT
                 os.makedirs(os.path.dirname(img_save_path), exist_ok=True)
-                io.imsave(img_save_path, img_data.astype(np.uint8))
+                io.imsave(img_save_path, img_data.astype(np.uint8), check_contrast=False)
                 if current_boxes is None:
-                    with open(img_save_path.replace('.tiff', '.txt'), 'w') as f:
+                    with open(img_save_path.replace(IMG_FORMAT, 'txt'), 'w') as f:
                         pass
                 else:
-                    np.savetxt(img_save_path.replace('.tiff', '.txt'), current_boxes, fmt='%d %d %d %d %d')
+                    current_boxes = np.clip(current_boxes, a_min=0, a_max=1e10)
+                    np.savetxt(img_save_path.replace(IMG_FORMAT, 'txt'), current_boxes, fmt='%d %.4f %.4f %.4f %.4f')
 
 
 if __name__ == '__main__':
-    PATCH_PATH = r'K:\Positive_Patches'
-    OVERLAP_RATE = 0.9
-    SLICE_SIZE = (512, 512)
-    SLICE_SAVED_PATH = r'K:\Positive_Patches\Slice'  # 切片保存的路径
+    PATCH_PATH = r'M:\Tiny_Ship\20211110_Positive_Patches'
+    OVERLAP_RATE = 0.1
+    SLICE_SIZE = (256, 256)
+    SLICE_SAVED_PATH = r'M:\Tiny_Ship\20211110_Slice'  # 切片保存的路径
     IMG_FORMAT = 'tiff'
 
     dir_list = glob.glob(PATCH_PATH + '/*')

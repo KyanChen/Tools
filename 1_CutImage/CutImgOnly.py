@@ -2,14 +2,14 @@ import os
 import glob
 from skimage import io
 import tqdm
-import gdal
+from osgeo import gdal
 import numpy as np
 import shutil
 
 img_piece_size = (2048, 1024)
-img_parent_path = r'I:\GF\temp_uncompress'
+img_parent_path = r'M:\Tiny_Ship\temp_uncompress'
 img_format = 'tiff'
-pieces_save_path = r'I:\GF\Patches'
+pieces_save_path = r'M:\Tiny_Ship\20211006_Patches'
 
 
 def get_file(in_path_list, img_format):
@@ -70,7 +70,7 @@ def cut_img_to_pieces(img_file: str, save_folder, img_format, is_1_level_need_co
                 raise Exception("Un Implement")
             img_piece = (img_data / normalize_factor).astype(np.uint8)
             io.imsave(save_folder + '/%s_%d_%d.tiff' %
-                              (os.path.basename(img_file).replace('.' + img_format, ''), w_step, h_step), img_piece)
+                              (os.path.basename(img_file).replace('.' + img_format, ''), w_step, h_step), img_piece, check_contrast=False)
 
 
 if __name__ == "__main__":
